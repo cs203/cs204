@@ -26,6 +26,21 @@ https://cs204.herokuapp.com/character/pset/{id_pset}/{type}
 https://cs204.herokuapp.com/character/pset/2/v -пример для 2 задания форма отчёта скринкаст
 https://cs204.herokuapp.com/character/pset/2/c -пример для 2 задания форма отчёта код на github 
 
+##Создаём базу данных
+sudo -u postgres psql
+create role user_one login createdb password '12345';
+\du   посмотреть пользователей
+\d -посмотреть таблицы в базе
+\d students - посмотреть таблицу
+\l все базы данных
+\c students подключиться к базе
+drop database datbase_name;
+drop role user_one;
+psql -U user_one -d postgres -h localhost
+psql postgresql://vadim:password@localhost:5432/register
+
+create database students owner user_one;
+
 
 ## Структура папок MVC
 1. bin/www - выполняемый файл, запуск сайта.
