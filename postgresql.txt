@@ -12,7 +12,7 @@ drop database gradebook;
 -------------------
 
 
-create database gradeboo;
+create database gradebook;
 \q
 
 psql $DATABASE_URL < gradebook.dump
@@ -51,3 +51,10 @@ insert into groups (id_group, phone) values(203, '382-2-554455');
 insert into groups (id_group, phone) values(103, '382-2-445566');
 
 select * from students join groups on students.id_group = groups.id;
+
+// исправление ошибки с оценками NULL
+select * from houses;
+select * from characters where id_house = 77;
+select * from problemset;
+select * from gradebook where id_problemset=31
+insert into gradebook (id_character, id_problemset, grade, is_done, is_checked) values (948, 31, 0, false, false);

@@ -101,3 +101,7 @@ git add, git commit, git push origin develop
 ssh vadim@vgb2
 cd students/cs204
 git pull
+
+
+посмотреть оценки
+http://90.188.117.161:8080/results/view
