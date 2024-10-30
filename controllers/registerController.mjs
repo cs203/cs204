@@ -29,7 +29,8 @@ async function register(req, res)
 			const res1 = await client.query(`select * from characters where username = $1`, [req.session.username]) 
 			if(res1.rows.length > 0) 
 			{ 
-				client.query('COMMIT');
+				await client.query('COMMIT');
+				await client.release()
 				res.redirect('/character/gradebook') 
 			} 
 			else 
@@ -57,7 +58,8 @@ async function register(req, res)
 				(select id as id_character from characters 
 				where id=$2) as sl2);`
 				await client.query(sql2, [id_house, id_character]);
-				client.query('COMMIT');
+				await client.query('COMMIT');
+				await client.release()
 			
 				res.redirect('/character/gradebook') 
 			} 
@@ -65,6 +67,7 @@ async function register(req, res)
 		{ 
 				res.send('Ошибка  добавления данных в базу. Error in registering') 
 				console.log("Ошибка, добавления данных в базу. Error in registering", err) 
+				client.release()
 		} 
 	} 
 		
